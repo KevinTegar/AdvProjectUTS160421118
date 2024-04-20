@@ -4,15 +4,15 @@ import com.google.gson.annotations.SerializedName
 
 data class Hobby(
     @SerializedName("id")
-    val id:Int?,
+    val id:Int,
     @SerializedName("judul")
-    val judul:String?,
+    val judul:String,
     @SerializedName("nama")
-    val nama:String?,
+    val nama:String,
     @SerializedName("deskripsi")
-    val desc:String?,
+    val desc:String,
     @SerializedName("isi")
-    val isi:String?,
+    val isi:String,
     @SerializedName("photo_url")
-    val photoUrl:String?
+    val photoUrl:String
 )

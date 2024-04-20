@@ -47,7 +47,7 @@ class HobbyListFragment : Fragment() {
     }
     fun observeViewModel() {
         viewModel.hobbyLD.observe(viewLifecycleOwner, Observer {
-            carListAdapter.updateStudentList(it)
+            carListAdapter.updateHobbyList(it)
         })
         viewModel.hobbyLoadErrorLD.observe(viewLifecycleOwner, Observer {
             if(it == true) {

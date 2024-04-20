@@ -3,21 +3,37 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/hobby_navigation"
-    app:startDestination="@id/loginActivity">
+    app:startDestination="@id/loginFragment">
 
-    <activity
-        android:id="@+id/loginActivity"
-        android:name="com.example.advprojectuts160421118.view.LoginActivity"
-        android:label="activity_login"
-        tools:layout="@layout/activity_login" />
-    <activity
-        android:id="@+id/regisActivity"
-        android:name="com.example.advprojectuts160421118.view.RegisActivity"
-        android:label="activity_regis"
-        tools:layout="@layout/activity_regis" />
     <fragment
         android:id="@+id/hobbyListFragment"
         android:name="com.example.advprojectuts160421118.view.HobbyListFragment"
         android:label="fragment_hobby_list"
-        tools:layout="@layout/fragment_hobby_list" />
+        tools:layout="@layout/fragment_hobby_list" >
+        <action
+            android:id="@+id/action_hobbyListFragment_to_detailHobbyFragment"
+            app:destination="@id/detailHobbyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailHobbyFragment"
+        android:name="com.example.advprojectuts160421118.view.DetailHobbyFragment"
+        android:label="fragment_detail_hobby"
+        tools:layout="@layout/fragment_detail_hobby" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.advprojectuts160421118.view.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_hobbyListFragment"
+            app:destination="@id/hobbyListFragment" />
+        <action
+            android:id="@+id/action_lregisFragment"
+            app:destination="@id/regisFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/regisFragment"
+        android:name="com.example.advprojectuts160421118.view.RegisFragment"
+        android:label="fragment_regis"
+        tools:layout="@layout/fragment_regis" />
 </navigation>
