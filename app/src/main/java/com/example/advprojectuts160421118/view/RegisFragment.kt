@@ -6,13 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.get
-import androidx.navigation.Navigation
-import com.example.advprojectuts160421118.R
-import com.example.advprojectuts160421118.databinding.FragmentLoginBinding
 import com.example.advprojectuts160421118.databinding.FragmentRegisBinding
-import com.example.advprojectuts160421118.viewmodel.LoginViewModel
+import com.example.advprojectuts160421118.viewmodel.UserVisewModel
 
 /**
  * A simple [Fragment] subclass.
@@ -20,7 +17,7 @@ import com.example.advprojectuts160421118.viewmodel.LoginViewModel
  * create an instance of this fragment.
  */
 class RegisFragment : Fragment() {
-    private lateinit var viewModel: LoginViewModel
+    private lateinit var viewModel: UserVisewModel
     private lateinit var binding: FragmentRegisBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,7 +29,14 @@ class RegisFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        viewModel = ViewModelProvider(this).get(UserVisewModel::class.java)
+        viewModel.regisLD.observe(viewLifecycleOwner, Observer { result ->
+            if (result) {
+                Toast.makeText(requireContext(), "Registrasi berhasil", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(requireContext(), "Registrasi gagal", Toast.LENGTH_SHORT).show()
+            }
+        })
 
         binding.btnRegister.setOnClickListener {
             try {
@@ -44,7 +48,6 @@ class RegisFragment : Fragment() {
                 val confPass = binding.txtRegisConfirmPassword.text.toString()
 
                 if (password == confPass) {
-                    viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
                     viewModel.regisUser(username,password,namaDepan, namaBelakang, email)
                 }else{
                     Toast.makeText(requireContext(), "Masukan password yang benar", Toast.LENGTH_SHORT).show()

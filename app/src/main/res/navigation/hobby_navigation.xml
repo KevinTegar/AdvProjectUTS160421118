@@ -18,7 +18,20 @@
         android:id="@+id/detailHobbyFragment"
         android:name="com.example.advprojectuts160421118.view.DetailHobbyFragment"
         android:label="fragment_detail_hobby"
-        tools:layout="@layout/fragment_detail_hobby" />
+        tools:layout="@layout/fragment_detail_hobby" >
+        <argument
+            android:name="judul"
+            app:argType="string" />
+        <argument
+            android:name="nama"
+            app:argType="string" />
+        <argument
+            android:name="isi"
+            app:argType="string" />
+        <argument
+            android:name="photo"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.advprojectuts160421118.view.LoginFragment"

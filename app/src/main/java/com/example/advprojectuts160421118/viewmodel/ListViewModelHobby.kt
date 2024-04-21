@@ -3,6 +3,7 @@ package com.example.advprojectuts160421118.viewmodel
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.android.volley.Request
 import com.android.volley.RequestQueue
@@ -43,6 +44,8 @@ class ListViewModelHobby (application: Application): AndroidViewModel(applicatio
         queue?.add(stringRequest)
 
     }
+
+
     override fun onCleared() {
         super.onCleared()
         queue?.cancelAll(TAG)

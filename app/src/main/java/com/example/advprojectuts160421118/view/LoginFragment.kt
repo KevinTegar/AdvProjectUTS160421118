@@ -1,10 +1,6 @@
 package com.example.advprojectuts160421118.view
 
-import android.content.Context
-import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,17 +9,8 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.android.volley.Request
-import com.android.volley.Response
-import com.android.volley.toolbox.StringRequest
-import com.android.volley.toolbox.Volley
-import com.example.advprojectuts160421118.R
-import com.example.advprojectuts160421118.databinding.FragmentHobbyListBinding
 import com.example.advprojectuts160421118.databinding.FragmentLoginBinding
-import com.example.advprojectuts160421118.viewmodel.ListViewModelHobby
-import com.example.advprojectuts160421118.viewmodel.LoginViewModel
-import org.json.JSONObject
+import com.example.advprojectuts160421118.viewmodel.UserVisewModel
 
 /**
  * A simple [Fragment] subclass.
@@ -31,7 +18,7 @@ import org.json.JSONObject
  * create an instance of this fragment.
  */
 class LoginFragment : Fragment() {
-    private lateinit var viewModel: LoginViewModel
+    private lateinit var viewModel: UserVisewModel
     private lateinit var binding: FragmentLoginBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,10 +30,10 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(UserVisewModel::class.java)
         viewModel.userLD.observe(viewLifecycleOwner, Observer { user ->
             if (user != null && user.isNotEmpty()) {
-                // Jika user tidak null dan tidak kosong, navigasikan ke layar Hobby List
+
                 val action = LoginFragmentDirections.actionLoginFragmentToHobbyListFragment()
                 Navigation.findNavController(view).navigate(action)
             }
@@ -75,7 +62,7 @@ class LoginFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        viewModel.clearUser() // Membersihkan data user saat Fragment dihancurkan
+        viewModel.clearUser()
     }
 
 }
